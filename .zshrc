@@ -24,9 +24,6 @@ fi
 export LC_CTYPE=${LANG}
 export LC_ALL=${LANG}
 
-# Speed up shell loading
-skip_global_compinit=1
-
 # Load Antigen package manager
 source "${ANTIGEN_PATH}/antigen.zsh"
 
