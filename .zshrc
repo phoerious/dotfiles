@@ -48,6 +48,9 @@ antigen bundle wd
 antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-syntax-highlighting
 
+# Other ZSH extensions
+autoload -U zmv
+
 # Powerlevel9k fallback theme
 if [[ "$SHELL_THEME" == "powerlevel9k" ]]; then
     antigen theme bhilburn/powerlevel9k powerlevel9k
