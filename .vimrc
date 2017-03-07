@@ -1,7 +1,6 @@
 " ---------------------------------------------------------------
 " Vim config file
 " Author: Janek Bevendorff <janek _AT_ jbev _._ net>
-" Gist: https://gist.github.com/Manko10/10136773
 " ---------------------------------------------------------------
 
 
