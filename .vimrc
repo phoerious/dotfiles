@@ -181,6 +181,9 @@ inoremap <C-S-Space> <C-x><C-o>
 " Use Ctrl+Backspace to delete last word
 imap <C-BS> <C-W>
 
+" Don't deselect lines after (un)indenting
+vnoremap < <gv
+vnoremap > >gv
 
 " ---------------------------------------------------------------
 " Plugin settings
