@@ -161,6 +161,9 @@ set spelllang=en_us
 " Set completion behavior
 set completeopt=menu,menuone,preview
 
+" Enable paste toggle hotkey
+set pastetoggle=<F2>
+
 " Improve key bindings for completion popup
 inoremap <expr> <CR>       pumvisible() ? "\<C-n>\<C-y>"            : "\<CR>"
 inoremap <expr> <Down>     pumvisible() ? "\<C-n>"                  : "\<Down>"
