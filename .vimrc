@@ -158,17 +158,16 @@ set spell
 set spelllang=en_us
 
 " Set completion behavior
-set completeopt=menu,menuone,preview
+set completeopt=menuone
+inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
+inoremap <expr> <CR>       pumvisible() ? "\<C-y>\<Esc>a" : "\<CR>"
+inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
+inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
+inoremap <expr> <PageDown> pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<PageDown>"
+inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
 
 " Enable paste toggle hotkey
 set pastetoggle=<F2>
-
-" Improve key bindings for completion popup
-inoremap <expr> <CR>       pumvisible() ? "\<C-n>\<C-y>"            : "\<CR>"
-inoremap <expr> <Down>     pumvisible() ? "\<C-n>"                  : "\<Down>"
-inoremap <expr> <Up>       pumvisible() ? "\<C-p>"                  : "\<Up>"
-inoremap <expr> <PageDown> pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<PageDown>"
-inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>"   : "\<PageUp>"
 
 " Smarter shortcuts for navigating windows
 noremap <C-h> <C-w>h
