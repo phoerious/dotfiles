@@ -3,7 +3,6 @@
 " Author: Janek Bevendorff <janek _AT_ jbev _._ net>
 " ---------------------------------------------------------------
 
-
 " ---------------------------------------------------------------
 " Set the runtime path to include Vundle and initialize
 " ---------------------------------------------------------------
@@ -159,7 +158,6 @@ set spelllang=en_us
 
 " Set completion behavior
 set completeopt=menuone
-inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
 inoremap <expr> <CR>       pumvisible() ? "\<C-y>\<Esc>a" : "\<CR>"
 inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
 inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
