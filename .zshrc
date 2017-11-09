@@ -1,5 +1,5 @@
 # Internal paths
-ANTIGEN_PATH="/usr/local/lib/antigen"
+ANTIGEN_PATH="${HOME}/.local/lib/antigen"
 POWERLINE_PATH="$(python3 -c "import site; print(site.getsitepackages()[0])")/powerline"
 
 # Powerline shell theme (use powerlevel9k as fallback)
