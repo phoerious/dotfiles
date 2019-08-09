@@ -1,10 +1,46 @@
-# Internal paths
-ANTIGEN_PATH="${HOME}/dotfiles/antigen"
-POWERLINE_PATH="$(python3 -c "import site; print(site.getsitepackages()[0])")/powerline"
+# ZSH configuration file.
+#
+# Requires the powerline-go shell theme (use powerlevel9k as fallback)
+# For installation instructions, see https://github.com/justjanne/powerline-go
+#
+# Basically:
+#   <install golang>
+#   go get -u github.com/justjanne/powerline-go
+#
+# Powerlevel9k is used as a fallback if powerline-go is not found.
+#
+# The theme also requires antigen, which is embedded as a Git submodule
+# in this repository. Clone it via:
+#
+#   git submodule update --init --recursive
 
-# Powerline shell theme (use powerlevel9k as fallback)
+# Define internal paths
+if [ -z "$GOPATH" ]; then
+    export GOPATH="${HOME}/go"
+fi
+ANTIGEN_PATH="${HOME}/dotfiles/antigen"
+POWERLINE_PATH="${GOPATH}/bin/powerline-go"
+
+# Set up powerline-go
+powerline_precmd() {
+    eval "$(${POWERLINE_PATH} -error $? -colorize-hostname -shell zsh -eval \
+        -modules 'nix-shell,ssh,venv,user,host,cwd,perms' \
+        -modules-right 'exit,jobs,git,docker,kube' \
+        -priority 'root,venv,ssh,exit,cwd,user,perms,host,jobs,git-branch,git-status,cwd-path' \
+        -cwd-max-depth 2 -max-width 30 -truncate-segment-width 25)"
+}
+
+install_powerline_precmd() {
+  for s in "${precmd_functions[@]}"; do
+    if [ "$s" = "powerline_precmd" ]; then
+      return
+    fi
+  done
+  precmd_functions+=(powerline_precmd)
+}
+
 SHELL_THEME="powerlevel9k"
-if [ -d "$POWERLINE_PATH" ]; then
+if [ -x "$POWERLINE_PATH" ]; then
     SHELL_THEME="powerline"
 fi
  
@@ -61,8 +97,7 @@ antigen apply 2>&1 > /dev/null
 
 # Powerline shell theme
 if [[ "$SHELL_THEME" == "powerline" ]]; then
-    powerline-daemon -q
-    source "${POWERLINE_PATH}/bindings/zsh/powerline.zsh"
+    install_powerline_precmd
 fi
 
 # Proper umask (needed for WSL and maybe some other broken systems)
