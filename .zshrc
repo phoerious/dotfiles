@@ -106,8 +106,23 @@ umask 022
 # Tree-view for kill command completion
 zstyle ':completion:*:*:kill:*:processes' command 'ps --forest -e -o pid,user,tty,cmd'
 
-# Manage SSH keys with keychain
+# Manage SSH keys with keychain if installed
 if $(command -v keychain > /dev/null); then
-    keychain id_rsa
+    keychain id_ed25519
     source  ~/.keychain/$(hostname)-sh
 fi
+
+# On WSL, connect to OpenSSH agent on Windows
+# Requires socat to be installed in WSL and npiprelay on the Windows side.
+# The latter can be downloaded from https://github.com/jstarks/npiperelay
+# Set NPIPRELAY_PATH to the path of the executable (e.g. in ~/.env)
+# If using the Windows OpenSSH agent, you should uninstall keychain.
+if [[ "$(uname -r)" == *microsoft-standard* ]] && [ -n "$NPIPRELAY_PATH" ]; then
+    export SSH_AUTH_SOCK="${HOME}/.ssh/agent.sock"
+    ss -a | grep -q "$SSH_AUTH_SOCK"
+    if [ $? -ne 0   ]; then
+        rm -f "$SSH_AUTH_SOCK"
+        (setsid socat UNIX-LISTEN:$SSH_AUTH_SOCK,fork EXEC:"${HOME}/.ssh/npiperelay.exe -ei -s //./pipe/openssh-ssh-agent",nofork &) >/dev/null 2>&1
+    fi
+fi
+
