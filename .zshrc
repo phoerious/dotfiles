@@ -122,7 +122,7 @@ if [[ "$(uname -r)" == *microsoft-standard* ]] && [ -n "$NPIPRELAY_PATH" ]; then
     ss -a | grep -q "$SSH_AUTH_SOCK"
     if [ $? -ne 0   ]; then
         rm -f "$SSH_AUTH_SOCK"
-        (setsid socat UNIX-LISTEN:$SSH_AUTH_SOCK,fork EXEC:"${HOME}/.ssh/npiperelay.exe -ei -s //./pipe/openssh-ssh-agent",nofork &) >/dev/null 2>&1
+        (setsid socat UNIX-LISTEN:$SSH_AUTH_SOCK,fork EXEC:"${NPIPRELAY_PATH} -ei -s //./pipe/openssh-ssh-agent",nofork &) >/dev/null 2>&1
     fi
 fi
 
