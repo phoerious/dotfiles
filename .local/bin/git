@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+if [[ "$PWD" =~ ^/[a-z]/.+ ]]; then
+    exec "/c/Program Files/Git/bin/git.exe" "$@"
+elif [[ "$PWD" =~ ^/mnt/[a-z]/.+ ]]; then
+    exec "/mnt/c/Program Files/Git/bin/git.exe" "$@"
+else
+    exec /usr/bin/git "$@"
+fi
