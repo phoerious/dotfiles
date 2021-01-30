@@ -23,7 +23,7 @@ POWERLINE_PATH="${GOPATH}/bin/powerline-go"
 
 # Set up powerline-go
 powerline_precmd() {
-    eval "$(${POWERLINE_PATH} -error $? -colorize-hostname -shell zsh -eval \
+    eval "$(${POWERLINE_PATH} -error $? -shell zsh -eval \
         -modules 'nix-shell,ssh,venv,user,host,cwd,perms' \
         -modules-right 'exit,jobs,git,docker,kube' \
         -priority 'root,venv,ssh,exit,cwd,user,perms,host,jobs,git-branch,git-status,cwd-path' \
