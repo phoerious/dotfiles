@@ -20,8 +20,8 @@ call vundle#rc()
 
 Plugin 'gmarik/vundle'
 "Plugin 'Rip-Rip/clang_complete'
-Plugin 'Valloric/YouCompleteMe'
-"Plugin 'Shougo/neocomplcache.vim'
+"Plugin 'Valloric/YouCompleteMe'
+Plugin 'Shougo/neocomplcache.vim'
 Plugin 'altercation/vim-colors-solarized'
 "Plugin 'ervandew/supertab'
 Plugin 'tpope/vim-fugitive'
@@ -193,6 +193,9 @@ let g:ycm_autoclose_preview_window_after_insertion=1
 let g:ycm_global_ycm_extra_conf = "~/.vim/ycm_extra_conf.py"
 let g:ycm_error_symbol=">>"
 let g:ycm_warning_symbol='--'
+
+" SnipMate config
+let g:snipMate = { 'snippet_version' : 1 }
 
 " Syntastic config
 set statusline+=%#warningmsg#
