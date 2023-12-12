@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+#
+# Wrapper script for using Gpg4Win instead of WSLs own Gpg.
+# Skip installation if not running on WSL.
 
 if [ -d /c ]; then
     exec "/c/Program Files (x86)/GnuPG/bin/gpg.exe" "$@"

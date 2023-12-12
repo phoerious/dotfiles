@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+#
+# Wrapper script for replacing WSLs own sluggish Git with the much faster Git for Windows.
+# Skip installation if not running on WSL.
 
 if [[ "$PWD" =~ ^/[a-z]/.+ ]]; then
     exec "/c/Program Files/Git/bin/git.exe" "$@"
@@ -7,3 +10,4 @@ elif [[ "$PWD" =~ ^/mnt/[a-z]/.+ ]]; then
 else
     exec /usr/bin/git "$@"
 fi
+
