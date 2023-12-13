@@ -67,7 +67,6 @@ antigen use oh-my-zsh
 
 # Oh-my-zsh default plugins
 antigen bundle colored-man-pages
-antigen bundle docker
 antigen bundle encode64
 antigen bundle git-extras
 antigen bundle github
