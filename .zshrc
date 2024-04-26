@@ -105,6 +105,11 @@ umask 022
 # Tree-view for kill command completion
 zstyle ':completion:*:*:kill:*:processes' command 'ps --forest -e -o pid,user,tty,cmd'
 
+# Use zoxide instead of cd if installed
+if command -v zoxide > /dev/null; then
+    eval "$(zoxide init zsh --cmd cd)"
+fi
+
 # Manage SSH keys with keychain if installed
 if $(command -v keychain > /dev/null); then
     keychain id_ed25519
