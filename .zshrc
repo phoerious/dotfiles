@@ -130,3 +130,6 @@ if [[ "$(uname -r)" == *microsoft-standard* ]] && [ -n "$NPIPRELAY_PATH" ]; then
     fi
 fi
 
+# iTerm2 shell integration
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
