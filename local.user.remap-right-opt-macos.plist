@@ -1,0 +1,21 @@
+<!--
+    LaunchAgent for remap-right-opt-macos.sh.
+    Copy to ~/Library/LaunchAgents and adjust path to script as needed.
+    macOS should automatically detect it, display a notification about it,
+    and show a new App Background Activity in the Login Item settings.
+    To load and start the launch agent once, run:
+    launchctl load ~/Library/LaunchAgents/local.user.remap-right-opt-macos.plist
+-->
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+   <key>Label</key>
+   <string>com.user.loginscript</string>
+   <key>ProgramArguments</key>
+   <array><string>/Users/USERNAME/dotfiles/remap-right-opt-macos.sh</string></array>
+   <key>RunAtLoad</key>
+   <true/>
+</dict>
+</plist>
+
